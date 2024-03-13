@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Itineraries
+				<a th:href="@{'/itinerary/create/' + ${packid}}" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>
+					<i class="fa-solid fa-square-plus" style="color: #770f03;"></i>
+					 New</a>
+			</h2>
+			<p><span style="color:red;margin:30px;" th:text="${msg}"></span></p>
+			<div class="table-responsive">
+				<table class="table table-striped page-details" width:"400px">
+					<thead class="table-dark">
+						<tr>
+							<th style="width:30%">Day</th >
+							<th>Description</th>
+							<th width="60px">Edit</th >
+							<th width="60px">Delete</th >
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.day}"></td>
+							<td th:text="${data.description}" style="text-align:justify"></td>
+							<td><a th:href="@{'/itinerary/edit/' + ${data.id}}" class="btn btn-warning "> Edit </a></td>
+							<td><a th:href="@{'/itinerary/delete/' + ${data.id}}" class="btn btn-danger ">Del</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

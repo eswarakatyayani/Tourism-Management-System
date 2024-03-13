@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en" layout:decorate="default" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Package List</title>
+</head>
+
+<body>
+<div class="row" layout:fragment="content">
+    <div class="row page-list">
+
+        <h2>
+            Trip List
+        </h2>
+        <div class="table-responsive">
+            <table class="table table-striped page-details">
+                <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Duration (Days)</th>
+                    <th>Manage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="data : ${datalist}">
+                    <td><a class="detail-link" th:href="@{'/pack/show/' + ${data.id}}"
+                           th:text="${data.packageName}"></a></td>
+                    <td th:text="${data.packageType}"></td>
+                    <td th:text="${data.duration}"></td>
+                    <td><a class="btn btn-warning btn-submit" th:href="@{'/trip/list/' + ${data.packageId}}">Manage</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

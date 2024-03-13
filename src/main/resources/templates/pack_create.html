@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" layout:decorate="default" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Package</title>
+</head>
+
+<body>
+<div class="row page-create" layout:fragment="content">
+    <div class="row">
+        <h2>
+            Add New Package
+
+        </h2>
+
+        <form enctype="multipart/form-data" method="post" th:action="@{/pack/save}" th:object="${pack}">
+            <table class="tbl-form">
+                <tr>
+                    <td>Photo</td>
+                    <td><input accept="image/png, image/jpeg" name="image" type="file"/></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input class="form-control" name="packageName" type="text"/></td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td><input class="form-control" name="packageType" type="text"/></td>
+                </tr>
+                <tr>
+                    <td>Locations</td>
+                    <td><textarea class="form-control" cols="60" name="locations" rows="3"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Duration (Days)</td>
+                    <td><input class="form-control" name="duration" type="text"/></td>
+                </tr>
+                <tr>
+                    <td>Inclusion</td>
+                    <td><textarea class="form-control" cols="60" name="inclusions" rows="3"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Exclusion</td>
+                    <td><textarea class="form-control" cols="60" name="exclusions" rows="3"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Adult price</td>
+                    <td><input class="form-control" name="adultPrice" type="text"/></td>
+                </tr>
+                <tr>
+                    <td>Child Price</td>
+                    <td><input class="form-control" name="childPrice" type="text"/></td>
+                </tr>
+
+            </table>
+            <button class="btn btn-success btn-submit" type="submit">Save</button>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

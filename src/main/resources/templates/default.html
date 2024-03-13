@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Tourism Management</title>
+		<link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" href="/css/style.css" />
+		<script src="https://kit.fontawesome.com/433b33a688.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+
+
+		<nav class="navbar  navbar-expand-lg navbar-dark " style="background: rgb(3,2,64);
+background: linear-gradient(180deg, rgba(3,2,64,1) 0%, rgba(9,23,198,0.9248074229691877) 100%);">
+			<div class="container">
+
+				<a class="navbar-brand" href="#"><span style="color:rgb(128, 255, 255); text-shadow:1px 1px 1px black;"><i
+							class="fa-solid fa-plane-departure"></i> Tourism Management</span>
+
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+						aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<div class="navbar-nav">
+							<a class="nav-link active" href="/admin/home">Home</a>
+							<a class="nav-link" href="/pack/list">Packages</a>
+							<a class="nav-link" href="/itinerary/pack/list">Itinerary</a>
+							<a class="nav-link" href="/trip/pack/list">Trip Schedule</a>
+							<a class="nav-link" href="/customer/list">Customer</a>
+							<a class="nav-link" href="/booking/list">Bookings</a>
+							<a class="nav-link" href="/admin/logout">Logout</a>
+						</div>
+					</div>
+			</div>
+		</nav>
+		<div class="container-fluid ">
+
+			<div class="container content-page"
+				style="background:url('http://localhost:9000/img/admin-content-bg.jpg'); background-size:100% 100%;height:480px;">
+				<div style="background:rgba(250,250,250,0.8);height:580px;">
+
+
+					<div class="starter-template" layout:fragment="content">
+
+					</div>
+				</div>
+			</div><!-- /.container -->
+		</div>
+		<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+		<script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
+	</body>
+
+</html>

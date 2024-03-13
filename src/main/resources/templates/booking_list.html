@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" layout:decorate="default" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Booking List</title>
+</head>
+
+<body>
+<div class="row" layout:fragment="content">
+    <div class="row page-list">
+
+        <h2>
+            Booking List
+        </h2>
+        <div class="table-responsive">
+            <table class="table table-striped page-details">
+                <thead class="table-dark">
+                <tr>
+                    <th>Customer Id</th>
+                    <th>Booking Id</th>
+                    <th>Package Id</th>
+                    <th>Booked Date</th>
+                    <th>Tourists</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Payment Status</th>
+                    <th>Confirm</th>
+                    <th>Cancel</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="data : ${datalist}">
+                    <td th:text="${data.custId}"></td>
+                    <td th:text="${data.bookingId}"></td>
+                    <td th:text="${data.packageId}"></td>
+                    <td th:text="${data.bookedDate}"></td>
+                    <td th:text="${data.adult}+${data.child}"></td>
+                    <td th:text="${data.amount}"></td>
+                    <td th:text="${data.bookingStatus}"></td>
+                    <td>
+                        <a th:href="@{'/booking/payment/' + ${data.bookingId}}"
+                           th:text="${data.payment.paymentStatus}"></a>
+                    </td>
+
+                    <td>
+                        <a class="btn btn-warning" th:href="@{'/booking/confirm/' + ${data.id}}"
+                           th:if="${data.bookingStatus != 'Cancelled' and data.bookingStatus != 'Confirmed'}"> <i
+                                class="fa-solid fa-circle-check"></i> confirm </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" th:href="@{'/booking/delete1/' + ${data.id}}"
+                           th:if="${data.bookingStatus != 'Cancelled' and data.bookingStatus != 'Confirmed'}"> <i
+                                class="fa-solid fa-rectangle-xmark"></i> cancel</a>
+                    </td>
+
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

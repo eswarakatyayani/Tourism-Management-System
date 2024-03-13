@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" layout:decorate="default_cust" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>My Booking List</title>
+</head>
+
+<body>
+<div class="row" layout:fragment="content">
+    <div class="row page-list">
+
+        <h2>
+            Bookings
+        </h2>
+        <div class="table-responsive">
+            <table class="table table-striped page-details">
+                <thead class="table-dark">
+                <tr>
+                    <th>Booking Id</th>
+                    <th>Booked Date</th>
+                    <th>Package Id</th>
+                    <th>Tourists</th>
+                    <th>Amount</th>
+                    <th>Booking Status</th>
+                    <th>Postpond Status</th>
+                    <th>Payment Status</th>
+                    <th>Cancel</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="data, i : ${datalist}">
+                    <td th:text="${data.bookingId}"></td>
+                    <td th:text="${data.bookedDate}"></td>
+                    <td th:text="${data.packageId}"></td>
+                    <td th:text="${data.adult}+${data.child}"></td>
+                    <td th:text="${data.amount}"></td>
+                    <td th:text="${data.bookingStatus}"></td>
+                    <td th:text="${data.isTripPosponded ? 'Trip Postponded' : ''}"></td>
+                    <td>
+                        <a th:href="@{'/booking/my-payment/' + ${data.bookingId}}"
+                           th:text="${data.payment.paymentStatus}"></a>
+                    </td>
+
+                    <td>
+                        <a class="btn btn-sm btn-success" th:href="@{'/booking/accept/' + ${data.id}}"
+                           th:if="${data.isTripPosponded}">Accept</a>
+                        <a class="btn btn-sm btn-danger" th:href="@{'/booking/delete/' + ${data.id}}"
+                           th:if="${data.bookingStatus != 'Cancelled'}"
+                           th:text="cancel">
+
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

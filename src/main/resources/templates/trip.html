@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Trip List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Trip List of <span th:text="${packname}" class="text-danger"></span>
+				<a th:href="@{'/trip/create/' + ${packid}}" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>
+					<i class="fa-solid fa-square-plus" style="color: #770f03;"></i>
+					New</a>
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th width="100px">Start Date</th >
+							<th width="100px">End Date</th >
+							<th>Total Seats</th>
+							<th>Minimum Seats</th>
+							<th>Available Seats</th>
+							<th width="140px">Postpone Trip</th >
+							<th width="140px">Cancel Trip</th >
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.startDate}"></td>
+							<td th:text="${data.endDate}"></td>
+							<td th:text="${data.totalSeats}"></td>
+							<td th:text="${data.minSeats}"></td>
+							<td th:text="${data.avlSeats}"></td>
+							<td><a th:href="@{'/trip/edit/' + ${data.id}}" class="btn btn-warning "><i class="fa-solid fa-clock"></i> Postpone </a></td>
+							<td><a th:href="@{'/trip/delete/' + ${data.id}}" class="btn btn-danger "><i class="fa-solid fa-clock"></i> Cancel</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

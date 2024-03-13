@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en" layout:decorate="default_cust"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Payment Confirmation</title>
+</head>
+
+<body>
+<div class="row page-create" layout:fragment="content">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <h2 class="txt-orange">Payment Confirmation</h2>
+            <form method="post" th:action="@{/customer/trip/book/save}" th:object="${payment}">
+                <table class="tbl-form">
+                    <tr>
+                        <td>Amount</td>
+                        <td><input class="form-control" name="amount" readonly th:value="${booking.amount}"
+                                   type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Credit Card Details</td>
+                    </tr>
+                    <tr>
+                        <td>Name on card</td>
+                        <td><input class="form-control" name="cardName" required type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td>Card Number</td>
+                        <td><input class="form-control" name="cardNumber" required type="text"/></td>
+                    </tr>
+
+                    <tr>
+                        <td>Card Exp Month</td>
+                        <td>
+                            <select class="form-control" id="cardExpMonth" name="cardExpMonth" required>
+                                <option>JAN</option>
+                                <option>FEB</option>
+                                <option>MAR</option>
+                                <option>APR</option>
+                                <option>MAY</option>
+                                <option>JUN</option>
+                                <option>JUL</option>
+                                <option>AUG</option>
+                                <option>SEP</option>
+                                <option>OCT</option>
+                                <option>NOV</option>
+                                <option>DEC</option>
+                            </select>
+                        </td>
+                    <tr>
+                        <td>Card Exp Year</td>
+                        <td><input class="form-control" min="2024" name="cardExpYear" required type="number"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Card CVV</td>
+                        <td><input class="form-control" min="1" name="cardCvv" required type="number"/></td>
+                    </tr>
+                </table>
+                <button class="btn btn-success btn-submit" type="submit">Pay Now</button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

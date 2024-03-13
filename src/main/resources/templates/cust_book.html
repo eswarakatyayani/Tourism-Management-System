@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="en" layout:decorate="default_cust" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Booking</title>
+</head>
+
+<body>
+<div class="row page-create" layout:fragment="content">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="txt-orange">Tour Booking</h2>
+            <h5 class="text-danger" th:text="${msg}"></h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <h5 class="text-center my-1 bg-primary p-2">Tour Details</h5>
+            <h6>Available Seats: <span th:text="${avlSeats}"></span></h6>
+            <form th:action="@{/customer/trip/book/add}" th:object="${tourist}">
+
+                <table class="tbl-form my-3">
+                    <tr>
+                        <th>Tourist Name</th>
+
+                        <td><input class="form-control" name="touristName" required type="text"/></td>
+                    </tr>
+                    <tr>
+                        <th>Tourist Type</th>
+
+                        <td><input checked name="touristType" type="radio" value="Adult"/> Adult &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input name="touristType" type="radio" value="Child"/> Child
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" colspan="2">
+                            <button class="btn btn-success btn-submit" type="submit">Add</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <table class="table" style="margin: auto" th:if="${booking != null}">
+                <tr>
+                    <th>Booking Date</th>
+                    <td th:text="${': '+booking.bookedDate}"></td>
+                </tr>
+                <tr>
+                    <th>Adult</th>
+                    <td th:text="${': '+booking.adult}"></td>
+                </tr>
+                <tr>
+                    <th>Child</th>
+                    <td th:text="${': '+booking.child}"></td>
+                </tr>
+                <tr>
+                    <th>Amount ($)</th>
+                    <td th:text="${': '+booking.amount}"></td>
+                </tr>
+            </table>
+            <div class="text-center my-3">
+                <a class="btn btnsmall btn-submit " th:href="@{'/customer/trip/book/payment'}">Book</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="btn btnsmall btn-submit "
+                                                  th:href="@{'/customer/trip/book/cancel'}">Cancel</a>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="bg-secondary  p-3" th:if="${booking != null}">
+                <table class="table text-white">
+                    <tr>
+                        <th>Tourist Name</th>
+                        <th>Type</th>
+                    </tr>
+                    <tr th:each="data : ${booking.tourists}">
+                        <td th:text="${data.touristName}"></td>
+                        <td th:text="${data.touristType}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+
+
+        <br> <br>
+        <div class="text-center my-3">
+            <a class="btn btn-submit " th:href="@{'/customer/trip/book/save'}">Book</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="btn btn-submit "
+                                              th:href="@{'/customer/trip/book/cancel'}">Cancel</a>
+        </div>
+    </div>
+    <div class="row  bg-warning p-3" style="margin-left: 1px"></div>
+
+</div>
+</body>
+
+</html>

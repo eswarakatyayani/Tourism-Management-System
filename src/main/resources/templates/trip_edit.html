@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en" layout:decorate="default" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Edit Trip Details </title>
+    <script>
+        function fnload() {
+            var dtToday = new Date();
+
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var minDate = year + '-' + month + '-' + day;
+            document.getElementById("startDate").setAttribute("min", minDate)
+            document.getElementById("endDate").setAttribute("min", minDate)
+        }
+
+        function getenddate(val, duration)
+        {
+             var duration = duration-1;
+            var dtToday = new Date(val.replace(/-/g, '\/'));
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var minDate = year + '-' + month + '-' + day;
+
+            // Set Max Date
+            dtToday.setDate(dtToday.getDate()+duration);
+
+            var maxMonth = dtToday.getMonth() + 1;
+            var maxDay = dtToday.getDate();
+            var maxYear = dtToday.getFullYear();
+            if (maxMonth < 10)
+                maxMonth = '0' + maxMonth.toString();
+            if (maxDay < 10)
+                maxDay = '0' + maxDay.toString();
+
+			var maxDate = maxYear + '-' + maxMonth + '-' + maxDay;
+            document.getElementById("endDate").setAttribute("min", minDate)
+            document.getElementById("endDate").value = maxDate;
+        }
+    </script>
+</head>
+
+<body>
+<div class="row page-edit" layout:fragment="content">
+    <div class="row">
+        <h2>
+            Edit Trip Details
+        </h2>
+        <form th:action="@{/trip/update}" th:object="${trip}">
+            <table class="tbl-form">
+
+                <tr>
+                    <td>Package Id</td>
+                    <td><input class="form-control" name="packageId" readonly th:value="${obj.packageId}" type="text"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Start Date</td>
+                    <td>
+                        <input class="form-control" id="startDate" name="startDate"
+                               th:onchange="'javascript:getenddate(this.value,'+${duration}+');'"
+                               th:value="${obj.startDate}" type="date"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>End Date</td>
+                    <td><input class="form-control" id="endDate" name="endDate" readonly th:value="${obj.endDate}"
+                               type="date"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total Seats</td>
+                    <td><input class="form-control" max="60" min="1" name="totalSeats" th:value="${obj.totalSeats}"
+                               type="number"/></td>
+                </tr>
+                <tr>
+                    <td>Minimum Seats</td>
+                    <td><input class="form-control" max="60" min="1" name="minSeats" th:value="${obj.minSeats}"
+                               type="number"/></td>
+                </tr>
+
+            </table>
+            <input name="id" th:value="${obj.id}" type="hidden"/>
+            <input name="avlSeats" th:value="${obj.avlSeats}" type="hidden"/>
+            <button class="btn btn-success btn-submit" type="submit">Update</button>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default_cust">
+
+	<head>
+		<title>Customer</title>
+	</head>
+
+	<body>
+		<div layout:fragment="content" class="page-create">
+
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="txt-orange" th:text="${package.packageName}"></h2>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div>
+					<img th:src="'/uploads/'+${package.imgUrl}" class="card-img-top">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card h-100">
+						<h5 class="text-center text-white my-1 bg-primary p-2">Tourist Details</h5>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-12">
+									<table class="table">
+										<tr>
+											<th style="width: 90px;">Tour Type</th>
+											<td th:text="': '+${package.packageType}"></td>
+										</tr>
+										<tr>
+											<th>Adult Price</th>
+											<td th:text="': $ '+${package.adultPrice}+'.00'"></td>
+										</tr>
+										<tr>
+											<th>Child Price</th>
+											<td th:text="': $ '+${package.childPrice}+'.00'"></td>
+										</tr>
+										<tr>
+											<th>Destinations</th>
+											<td th:text="': '+${package.locations}"></td>
+										</tr>
+										<tr>
+											<th>Inclusions</th>
+											<td th:text="': '+${package.inclusions}"></td>
+										</tr>
+										<tr>
+											<th>Exclusions</th>
+											<td th:text="': '+${package.exclusions}"></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="card h-100">
+						<h5 class="text-center my-1 bg-primary p-2">Trip Schedules</h5>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-12">
+									<table class="table table-stripped">
+										<thead>
+											<tr>
+												<th>Start Date</th>
+												<th>End Date</th>
+												<th>Total Seats</th>
+												<th>Available</th>
+												<th>Book</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="data : ${triplist}">
+												<td th:text="${data.startDate}"></td>
+												<td th:text="${data.endDate}"></td>
+												<td th:text="${data.totalSeats}"></td>
+												<td th:text="${data.avlSeats}"></td>
+												<td><a th:if="${data.avlSeats > 0}" th:href="'/customer/trip/book/'+${data.id}"
+														class="btnsmall">Book
+														Now</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card h-100">
+						<h5 class="text-center my-1 bg-primary p-2">Itinerary Details</h5>
+						<div class="card-body">
+							<table class="table table-striped table-bordered">
+								<tr th:each="data : ${itinerarylist}">
+									<td th:text="'Day : '+${data.day}" width="100px"></td>
+									<td th:text="${data.description}"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+
+</html>

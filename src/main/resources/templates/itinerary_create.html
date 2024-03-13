@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Add Package</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2>
+				Add New Itinerary for <span th:text="${packid}"></span>
+
+			</h2>
+
+			<form th:action="@{/itinerary/save}" th:object="${itinerary}" >
+				<table class="tbl-form">
+					
+					<tr>
+						<td>Package Id</td>
+						<td><input type="text" class="form-control" name="packageId" th:value="${packid}" readonly  /></td>
+					</tr>
+					<tr>
+						<td>Day</td>
+						<td><input type="text" class="form-control" name="day" th:value="${day}" /></td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td><textarea class="form-control" name="description" rows="4" cols="60"></textarea></td>
+					</tr>
+					
+
+				</table>
+				<button type="submit" class="btn btn-success btn-submit">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

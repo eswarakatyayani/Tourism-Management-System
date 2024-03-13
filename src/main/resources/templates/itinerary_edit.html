@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Edit Itinerary Details </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Edit Itinerary Details
+			</h2>
+			<form th:action="@{/itinerary/update}" th:object="${itinerary}">
+				<table class="tbl-form">
+				
+					<tr>
+						<td>Package Id</td>
+						<td><input type="text" class="form-control" name="packageId" th:value="${obj.packageId}" readonly/></td>
+					</tr>
+					<tr>
+						<td>Day</td>
+						<td><input type="text" class="form-control" name="day" th:value="${obj.day}"/></td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td><textarea class="form-control" name="description" th:text="${obj.description}" rows="4" cols="50"></textarea></td>
+					</tr>
+					
+				</table>
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<button type="submit" class="btn btn-success btn-submit">Update</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en" layout:decorate="default" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Show Package Details</title>
+</head>
+
+<body>
+<div class="row page-view" layout:fragment="content">
+    <div class="row">
+
+        <h2>
+            <span th:text="${obj.packageName}"></span>
+        </h2>
+
+        <table class="tbl-show table table-success ">
+            <tr>
+                <td colspan="2">
+                    <img style="width:60%;height:280px;" th:src="@{'/uploads/' + ${obj.imgUrl}}">
+                </td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td th:text="${obj.packageId}"></td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td th:text="${obj.packageType}"></td>
+            </tr>
+            <tr>
+                <td>Locations</td>
+                <td th:text="${obj.locations}"></td>
+            </tr>
+            <tr>
+                <td>Duration (Days)</td>
+                <td th:text="${obj.duration}"></td>
+            </tr>
+            <tr>
+                <td>Inclusion</td>
+                <td th:text="${obj.inclusions}"></td>
+            </tr>
+            <tr>
+                <td>Exclusion</td>
+                <td th:text=" ${obj.exclusions}"></td>
+            </tr>
+            <tr>
+                <td>Adult price</td>
+                <td th:text="${obj.adultPrice}"></td>
+            </tr>
+            <tr>
+                <td>Child Price</td>
+                <td th:text="${obj.childPrice}"></td>
+            </tr>
+
+        </table>
+
+        <form action="/pack/delete">
+            <input name="id" th:value="${obj.id}" type="hidden"/>
+            <h2><input class="btn btn-danger btn-submit" onclick="return confirm('Are you sure?');" type="submit"
+                       value="Delete"/>
+                <a class="btn btn-warning btn-submit" th:href="@{'/pack/edit/' + ${obj.id}}">Edit</a>
+            </h2>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

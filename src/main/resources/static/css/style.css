@@ -1,0 +1,86 @@
+.tbl-form,
+.tbl-show,
+.create-form,
+.edit-form {
+	margin: auto;
+}
+
+.tbl-form tr td {
+	padding: 5px;
+}
+
+body {
+	background-color: #f3f3f3;
+}
+
+.page-create,
+.page-list,
+.page-edit,
+.page-view {
+	text-align: center;
+	margin: auto;
+}
+
+.page-create table,
+.page-edit table,
+.page-view table {
+	text-align: left;
+}
+
+.page-create h2,
+.page-list h2,
+.page-edit h2,
+.page-view h2 {
+	color: #d90000;
+	margin: 10px auto !important;
+}
+
+.page-view .tbl-show {
+	min-width: 700px;
+	box-shadow: 3px 3px 3px black;
+	;
+}
+
+.page-view .tbl-show tr td:first-child {
+	padding-left: 40px;
+}
+
+.btn-submit {
+	min-width: 150px;
+}
+
+.content-page {
+	min-height: 550px;
+}
+
+
+.txt-orange {
+	color: #d90000 !important;
+}
+
+.bs {
+	box-shadow: 1px 1px 2px black;
+}
+
+.ts {
+	text-shadow: 2px 2px 2px black;
+}
+
+
+.btnsmall {
+	padding: 3px 8px;
+	border-radius: 5px;
+	background: #c60000;
+	text-decoration: none;
+	color: #efefef;
+}
+
+.detail-link {
+	text-decoration: none;
+	padding: 6px 14px;
+	background: #bb0f03;
+	color: #dfdfdf;
+	border-radius: 6px;
+	display: inline-block;
+	min-width: 130px;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en" layout:decorate="default"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+    <title>Payment Confirmation</title>
+</head>
+
+<body>
+<div class="row page-create" layout:fragment="content">
+    <div class="row justify-content-center">
+        <div class="col-sm-4">
+            <h2 class="txt-orange mb-4">Payment Confirmation</h2>
+            <table>
+                <tr>
+                    <th>Booking Id</th>
+                    <td>:</td>
+                    <td th:text="${payment.bookingId}"></td>
+                </tr>
+                <tr>
+                    <th>Payment Status</th>
+                    <td>:</td>
+                    <td th:text="${payment.paymentStatus}"></td>
+                </tr>
+                <tr>
+                    <th>Amount ($)</th>
+                    <td>:</td>
+                    <td th:text="|$ ${payment.amount}"></td>
+                </tr>
+                <tr>
+                    <th>Name on Card</th>
+                    <td>:</td>
+                    <td th:text="${payment.cardName}"></td>
+                </tr>
+                <tr>
+                    <th>Card Number</th>
+                    <td>:</td>
+                    <td th:text="${payment.cardNumber}"></td>
+                </tr>
+            </table>
+            <a class="btn btn-sm btn-warning mt-4" th:onclick="javascript:history.back()">Back</a>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default_cust">
+
+	<head>
+		<title>My Profile </title>
+	</head>
+
+	<body>
+		<div layout:fragment="content">
+
+
+			<div class="my-2">
+				<h2 class="text-danger text-center">
+					My Profile
+				</h2>
+
+				<form th:action="@{/customer/update}" th:object="${customer}" class="w-75 m-auto py-2">
+
+					<div class="row mb-3">
+						<div class="col-sm-6">
+							<label for="customerId" class="form-label">Customer&nbsp;Id</label>
+							<input type="text" class="form-control" name="customerId" id="customerId" th:value="${obj.customerId}"
+								required readonly>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-sm-6">
+							<label for="firstname" class="form-label">First&nbsp;name</label>
+							<input type="text" class="form-control" name="firstname" id="firstname" th:value="${obj.firstname}"
+								required>
+						</div>
+						<div class="col-sm-6">
+							<label for="lastname" class="form-label">Last&nbsp;name</label>
+							<input type="text" class="form-control" name="lastname" id="lastname" th:value="${obj.lastname}" required>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-sm-4">
+							<label for="dob" class="form-label">Birth Date</label>
+							<input type="date" class="form-control" name="dob" id="dob" th:value="${obj.dob}" required>
+						</div>
+						<div class="col-sm-4">
+							<label for="mobile" class="form-label">Phone</label>
+							<input type="text" class="form-control" name="mobile" id="mobile" th:value="${obj.mobile}" required>
+						</div>
+						<div class="col-sm-4">
+							<label for="emailId" class="form-label">Email</label>
+							<input type="email" class="form-control" name="emailId" id="emailId" th:value="${obj.emailId}" required>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-sm-12">
+							<label for="address" class="form-label">Address</label>
+							<textarea name="address" id="address" class="form-control" th:text="${obj.address}"></textarea>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-sm-6">
+							<label for="city" class="form-label">City</label>
+							<input type="text" class="form-control" name="city" id="city" th:value="${obj.city}" required>
+						</div>
+						<div class="col-sm-6">
+							<label for="zipCode" class="form-label">Zip Code</label>
+							<input type="text" class="form-control" name="zipCode" id="zipCode" th:value="${obj.zipCode}" required>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-sm-6">
+							<label for="password" class="form-label">Password</label>
+							<input type="password" class="form-control" name="password" id="password" th:value="${obj.password}"
+								required>
+						</div>
+					</div>
+
+					<input type="hidden" name="id" th:value="${obj.id}" />
+					<button type="submit" class="btn btn-success btn-submit">Update Profile</button>
+
+				</form>
+
+			</div>
+		</div>
+	</body>
+
+</html>
